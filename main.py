@@ -2,9 +2,8 @@ from flask import Flask, request
 from flask_restful import Resource, Api
 from ServerGet import servergetinfo
 import json
-from config import host, port
+from config import host, port, api_version
 from ServerGet.database import add_record_global, add_record_local, add_record_program
-
 
 
 app = Flask(__name__)
@@ -24,7 +23,7 @@ class GetInfoServers(Resource):
     def get(self):
         info = self.get_info_server()
         return info
-api.add_resource(GetInfoServers, '/api/v0.1/getinfoserversglobal')
+api.add_resource(GetInfoServers, f'/api/{api_version}/getinfoserversglobal')
 
 
 class AddRecordGlobal(Resource):
@@ -46,7 +45,7 @@ class AddRecordGlobal(Resource):
         )
 
         return {'message': 'The entry was successfully added'}, 201
-api.add_resource(AddRecordGlobal, '/api/v0.1/addrecordglobal')
+api.add_resource(AddRecordGlobal, f'/api/{api_version}/addrecordglobal')
 
 
 class AddRecordProgramList(Resource):
@@ -66,7 +65,7 @@ class AddRecordProgramList(Resource):
         )
 
         return {'message': 'The entry was successfully added'}, 201
-api.add_resource(AddRecordProgramList, '/api/v0.1/addrecordprogram')
+api.add_resource(AddRecordProgramList, f'/api/{api_version}/addrecordprogram')
 
 
 class AddRecordLocal(Resource):
@@ -88,7 +87,7 @@ class AddRecordLocal(Resource):
         )
 
         return {'message': 'The entry was successfully added'}, 201
-api.add_resource(AddRecordLocal, '/api/v0.1/addrecordlocal')
+api.add_resource(AddRecordLocal, f'/api/{api_version}/addrecordlocal')
 
 
 
@@ -105,7 +104,7 @@ class GetInfoServersLocal(Resource):
     def get(self):
         info = self.get_info_server()
         return info
-api.add_resource(GetInfoServersLocal, '/api/v0.1/getinfoserverslocal')
+api.add_resource(GetInfoServersLocal, f'/api/{api_version}/getinfoserverslocal')
 
 if __name__ == '__main__':
     app.run(host, port, debug=True)
