@@ -11,6 +11,7 @@
 config.py
 ServerGet/config
 ServerGet/database/database.db
+test.py
 *_BACKUP_*.txt
 *_BASE_*.txt
 *_LOCAL_*.txt

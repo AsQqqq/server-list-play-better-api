@@ -73,6 +73,14 @@ def add_record_local(client_ip, client_port, server_ip, server_port):
     session.add(new_record)
     session.commit()
 
+
+def add_record_program(client_ip, client_port, program_version):
+    """Добавляет запись в таблицу ProgramList."""
+    new_record = ProgramList(client_ip=client_ip, client_port=client_port, 
+                                 program_version=program_version)
+    session.add(new_record)
+    session.commit()
+
 if __name__ == '__main__':
     create_database()
     print("База данных и таблицы созданы.")
